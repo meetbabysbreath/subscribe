@@ -10,7 +10,7 @@ export default class SubTest extends Component {
         pub.subscribe('change',this.test1.bind(this))
     }
     componentWillUnmount() {
-        
+
     }
     render () {
         let {result} = this.state;
@@ -26,7 +26,7 @@ export default class SubTest extends Component {
     }
     test1() {
         this.setState({
-            result : '我订阅的事件变化啦'
+            result : '我订阅的事件变化啦lalal'
         })
     }
     /**
