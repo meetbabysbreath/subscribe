@@ -7,38 +7,38 @@ export default class SubTest extends Component {
         this.state = {
             result : '1'
         }
-        pub.subscribe('change',this.test1.bind(this))
+        pub.subscribe('change',this.handleChange.bind(this));
     }
     componentWillUnmount() {
-
+        pub.clear('change')
     }
     render () {
         let {result} = this.state;
         return (
             <div>
                 <Button onClick={()=>{this.onSubScribe()}}>开始发布事件</Button>
-                <Button onClick={()=>{this.offSubScribe()}}>取消发布事件</Button>
+                <Button onClick={()=>{this.offSubScribe()}}>清除发布事件</Button>
                 <div>
                     result :{result}
                 </div>
             </div>
         )
     }
-    test1() {
+    handleChange() {
         this.setState({
-            result : '我订阅的事件变化啦lalal'
+            result : '我订阅的事件变化啦'
         })
     }
     /**
      * 开始发布事件
      */
     onSubScribe() {
-        pub.public('change');
+        pub.publish('change');
     }
     /**
-     * 开始发布事件
+     * 清除发布事件
      */
     offSubScribe() {
-
+        pub.clear('change');
     }
 }
